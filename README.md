@@ -1,4 +1,7 @@
 # QSAR
-This repo contains all code from drug research project at datacon 2025.
+This repo contains all code from Alzheimer drug discovery challenge at Datacon 2025.
 
- - QSAR.ipynb contains all mini-tasks (1,2,3,4)
+ - /main <- main task - Alzheimer drug discovery
+ - /preparation <- all preparation code (some of subtasks of main project, research of methods)
+
+ 
