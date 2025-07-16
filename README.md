@@ -1,7 +1,49 @@
-# QSAR
-This repo contains all code from Alzheimer drug discovery challenge at Datacon 2025.
+# QSAR: Alzheimer Drug Discovery Challenge (Datacon 2025)
 
- - /main <- main task - Alzheimer drug discovery
- - /preparation <- all preparation code (some of subtasks of main project, research of methods)
+Этот репозиторий содержит код и данные для проекта по генерации, фильтрации и анализу молекул-кандидатов, воздействующих на ключевые (преполагаемо) мишени, связанные с болезнью Альцгеймера: **TNF-alpha**, **CDK5**, **NLRP3**.
 
- 
+## Описание проекта
+
+- **Цель:** Поиск и отбор перспективных молекул для ингибирования выбранных биологических мишеней, связанных с нейродегенеративными процессами.
+- **Этапы:** 
+  1. Сбор и парсинг данных по активностям молекул (ChEMBL)
+  2. Предобработка, агрегация и фильтрация данных
+  3. Вычисление дескрипторов и фингерпринтов (RDKit, Mordred, MACCS, Morgan)
+  4. Обучение моделей QSAR (CatBoost, Random Forest, MLP, CNN1d)
+  5. Генерация и скрининг новых кандидатов
+
+## Структура репозитория
+
+```
+drug_research/
+├── README.md
+├── main/
+│   ├── cdk5/
+│   │   ├── cdk5_model.ipynb
+│   │   └── data/
+│   ├── nlrp/
+│   │   ├── nrlp_model.ipynb
+│   │   └── data/
+│   ├── tnf_alpha/
+│   │   ├── tnf_alpha.ipynb
+│   │   └── data/
+│   ├── potential_candidates/
+│   │   ├── hash_ligand_mapping_CDK5R1.csv
+│   │   ├── hash_ligand_mapping_NLRP3.csv
+│   │   └── hash_ligand_mapping_TNF.csv
+├── preparations/
+│   └── QSAR.ipynb
+```
+
+### Описание основных папок и файлов
+
+- **main/**  
+  Основная рабочая директория. Для каждой мишени (`cdk5`, `nlrp`, `tnf_alpha`) есть отдельная папка с ноутбуками и поддиректорией `data/` для хранения промежуточных и финальных датасетов, параметров моделей, дескрипторов и фингерпринтов.
+
+- **potential_candidates/**  
+  Содержит таблицы соответствия хэшей и SMILES молекул-кандидатов для каждой мишени. Молекулы были получены с помощью промпта-сиквента в DrugGPT.
+
+- **preparations/**  
+  Вспомогательные ноутбуки для ресерча, тестирования методов, первичной обработки данных, экспериментов с моделями и дескрипторами.
+
+
